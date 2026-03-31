@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0a0a1a;
+    color: #e8e6f0;
+    font-family: 'Inter', sans-serif;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#stage {
+    text-align: center;
+    max-width: 700px;
+    padding: 24px;
+}
+
+/* Typography */
+.heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.subtext {
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: #9994b8;
+    margin-bottom: 32px;
+    line-height: 1.5;
+}
+
+/* Cards grid */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    perspective: 800px;
+}
+
+/* Individual card */
+.card {
+    width: 100px;
+    border-radius: 8px;
+    cursor: default;
+    animation: cardIn 0.4s ease backwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: rotateY(90deg) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0) scale(1);
+    }
+}
+
+@keyframes cardOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.5) rotateY(90deg);
+    }
+}
+
+.card.removing {
+    animation: cardOut 0.4s ease forwards;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: #6c5ce7;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 28px rgba(108, 92, 231, 0.6);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #9994b8;
+    border: 1px solid #333;
+    padding: 10px 24px;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+.btn-ghost:hover {
+    border-color: #6c5ce7;
+    color: #e8e6f0;
+}
+
+/* Direction buttons */
+.directions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.dir-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: transparent;
+    color: #e8e6f0;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dir-btn:hover {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.15);
+    transform: scale(1.1);
+}
+
+/* Suit selector */
+.suits {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.suit-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    border: 2px solid #333;
+    background: transparent;
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suit-btn:hover {
+    border-color: #6c5ce7;
+    background: rgba(108, 92, 231, 0.15);
+    transform: scale(1.1);
+}
+
+/* Fade in */
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sparkle effect for reveal */
+.reveal-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 16px;
+}
+
+/* Responsive cards */
+@media (max-width: 480px) {
+    .card { width: 72px; }
+    .cards {
+        grid-template-columns: repeat(3, 72px);
+        gap: 8px;
+    }
+}
